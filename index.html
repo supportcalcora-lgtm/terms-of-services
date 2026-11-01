@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service – Calcora</title>
+<meta name="description" content="Terms of Service for the Calcora calculator app.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png">
+<style>
+  :root {
+    --bg: #eef0f3;
+    --surface: #ffffff;
+    --ink: #1c2127;
+    --muted: #55606c;
+    --line: #d9dde3;
+    --link: #b84e05;
+    --accent: #e8741e;
+    --lcd: #14181d;
+    --lcd-ink: #f3f5f7;
+    --lcd-muted: #8b96a3;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1317;
+      --surface: #171c22;
+      --ink: #e9edf1;
+      --muted: #9aa5b1;
+      --line: #2a313a;
+      --link: #ff9a4d;
+      --lcd: #07090b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  a { color: var(--link); text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+
+  /* ---------- Header + calculator-display hero ---------- */
+  .site-head { padding: 20px 0 0; }
+  .head-row { display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.125rem; text-decoration: none; color: var(--ink); }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; display: block; }
+  .head-nav a { margin-left: 18px; color: var(--muted); text-decoration: none; font-size: .9375rem; }
+  .head-nav a:first-child { margin-left: 0; }
+  .head-nav a:hover { color: var(--ink); }
+  .head-nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+  .display {
+    margin: 20px 0 0;
+    background: var(--lcd);
+    color: var(--lcd-ink);
+    border-radius: 22px;
+    padding: clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px);
+    text-align: right;
+    font-family: var(--mono);
+    overflow: hidden;
+  }
+  .display .expr {
+    font-size: clamp(2rem, 7vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    overflow-wrap: anywhere;
+  }
+  .cursor {
+    display: inline-block;
+    width: .08em;
+    height: .9em;
+    margin-left: .12em;
+    vertical-align: -.1em;
+    background: var(--accent);
+    animation: blink 1.06s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .display .ans { margin-top: 14px; font-size: clamp(1rem, 2.6vw, 1.375rem); color: var(--lcd-muted); line-height: 1.4; }
+  .updated { margin: 14px 4px 0; color: var(--muted); font-size: .9375rem; }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 56px);
+    margin: 32px auto 64px;
+    align-items: start;
+  }
+  .toc { position: sticky; top: 24px; font-size: .9375rem; }
+  .toc summary { list-style: none; cursor: pointer; font-weight: 600; padding: 6px 0 10px; }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .toc li a {
+    display: block;
+    padding: 5px 0 5px 14px;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    color: var(--muted);
+    text-decoration: none;
+    line-height: 1.35;
+  }
+  .toc li a:hover { color: var(--ink); }
+  .toc li a.active { color: var(--ink); border-left-color: var(--accent); font-weight: 600; }
+
+  /* ---------- Terms text ---------- */
+  article { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(22px, 5vw, 52px); }
+  .lead { font-size: 1.1875rem; margin-top: 0; }
+  section { max-width: 68ch; }
+  section + section { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 .75rem; letter-spacing: -.01em; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  li { margin-bottom: .6rem; }
+  li::marker { color: var(--accent); }
+  .callout {
+    border-left: 4px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 14px 18px;
+    border-radius: 0 12px 12px 0;
+    font-weight: 600;
+  }
+  .contact { font-size: 1.125rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--muted); font-size: .9375rem; }
+  footer p { margin: 0 0 6px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: minmax(0, 1fr); margin-top: 24px; }
+    .toc { position: static; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px; }
+    .toc summary { padding: 12px 0; }
+    .toc summary::after { content: "+"; float: right; font-weight: 400; font-size: 1.25rem; line-height: 1; }
+    .toc[open] summary::after { content: "–"; }
+    .toc ol { margin-bottom: 12px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 1rem; }
+    .wrap { width: calc(100% - 24px); }
+    article { border-radius: 16px; }
+    h2 { font-size: 1.3125rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cursor { animation: none; }
+  }
+  @media print {
+    body { background: #fff; color: #000; }
+    .toc, .display .cursor, .head-nav { display: none; }
+    .layout { display: block; }
+    article { border: 0; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head wrap">
+  <div class="head-row" id="top">
+    <a class="brand" href="#top">
+      <img src="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png" alt="" width="34" height="34" onerror="this.style.display='none'">
+      Calcora
+    </a>
+    <nav class="head-nav" aria-label="Legal pages"> 
+      <a href="https://supportcalcora-lgtm.github.io/privacy-policy/">Privacy Policy</a>
+      <a href="terms-of-service.html" aria-current="page">Terms of Service</a>
+    </nav>
+  </div>
+  <div class="display" role="img" aria-label="Terms of Service. Plain rules for using Calcora.">
+    <div class="expr" aria-hidden="true">Terms of Service<span class="cursor"></span></div>
+    <div class="ans" aria-hidden="true">= Plain rules for using Calcora</div>
+  </div>
+  <p class="updated">Last updated: November 2026</p>
+</header>
+
+<main class="wrap layout">
+
+  <details class="toc" id="toc" open>
+    <summary>Contents</summary>
+    <nav aria-label="Terms of service sections">
+      <ol>
+        <li><a href="#acceptance">1. Accepting these terms</a></li>
+        <li><a href="#use">2. Using Calcora</a></li>
+        <li><a href="#themes">3. Premium themes and ads</a></li>
+        <li><a href="#accuracy">4. Calculation accuracy</a></li>
+        <li><a href="#ip">5. Intellectual property</a></li>
+        <li><a href="#third-party">6. Third-party services</a></li>
+        <li><a href="#privacy">7. Your privacy</a></li>
+        <li><a href="#warranty">8. No warranties</a></li>
+        <li><a href="#liability">9. Limitation of liability</a></li>
+        <li><a href="#termination">10. Ending your use</a></li>
+        <li><a href="#changes">11. Changes to these terms</a></li>
+        <li><a href="#law">12. Governing law</a></li>
+        <li><a href="#contact">13. Contact us</a></li>
+      </ol>
+    </nav>
+  </details>
+
+  <article>
+    <p class="lead">These Terms of Service ("Terms") are the rules for using Calcora ("we," "our," or "the app"), our calculator application. Please read them before you use the app.</p>
+
+    <section id="acceptance">
+      <h2>1. Accepting these terms</h2>
+      <p>By downloading, installing, or using Calcora, you agree to these Terms. If you do not agree, please do not use the app.</p>
+    </section>
+
+    <section id="use">
+      <h2>2. Using Calcora</h2>
+      <p>We give you a personal, non-exclusive, non-transferable, revocable license to install and use Calcora on your own devices for personal or business calculations.</p>
+      <p>When using the app, you agree not to:</p>
+      <ul>
+        <li>Copy, modify, or distribute the app or any part of it, except as the law allows</li>
+        <li>Reverse engineer, decompile, or try to extract the source code of the app, except as the law allows</li>
+        <li>Remove or bypass any security feature, or tamper with the ad or theme unlock system</li>
+        <li>Use the app for anything unlawful, or in a way that could harm the app or its users</li>
+        <li>Resell, rent, or sublicense the app</li>
+      </ul>
+    </section>
+
+    <section id="themes">
+      <h2>3. Premium themes and ads</h2>
+      <p>Calcora is free to use. Some premium themes can be unlocked by watching a rewarded video ad. By choosing to watch an ad, you agree to the ad being shown to you.</p>
+      <ul>
+        <li>Unlocked themes are stored on your device. Uninstalling the app or clearing its data may remove them, and you may need to unlock them again.</li>
+        <li>Themes have no cash value and cannot be sold, transferred, or exchanged.</li>
+        <li>If an ad cannot be loaded or shown, for example because you are offline, the theme will not be unlocked.</li>
+        <li>We may change, add, or remove themes and the way they are unlocked at any time.</li>
+      </ul>
+    </section>
+
+    <section id="accuracy">
+      <h2>4. Calculation accuracy</h2>
+      <p class="callout">Always double-check results that matter.</p>
+      <p>We work to make Calcora accurate, but all calculators have limits, including rounding and very large or very small numbers. Calcora should not be your only source for financial, medical, engineering, legal, or safety-critical decisions. You are responsible for checking any result before you rely on it.</p>
+    </section>
+
+    <section id="ip">
+      <h2>5. Intellectual property</h2>
+      <p>Calcora, including its name, logo, design, themes, and code, belongs to us and is protected by copyright and other laws. These Terms do not give you any ownership of it. The calculations you enter and your calculation history belong to you.</p>
+    </section>
+
+    <section id="third-party">
+      <h2>6. Third-party services</h2>
+      <p>Calcora uses Google AdMob to show ads. Your use of those ads is also subject to Google's own terms and policies, and we are not responsible for third-party services or the content of the ads they show. Links in the app or on these pages may lead to websites we do not control.</p>
+    </section>
+
+    <section id="privacy">
+      <h2>7. Your privacy</h2>
+      <p>How your data is handled is explained in our <a href="privacy-policy.html">Privacy Policy</a>, which is part of these Terms.</p>
+    </section>
+
+    <section id="warranty">
+      <h2>8. No warranties</h2>
+      <p>Calcora is provided "as is" and "as available," without warranties of any kind, either express or implied. This includes any warranty of accuracy, fitness for a particular purpose, or non-infringement. We do not promise that the app will always work, be free of errors, or be available without interruption.</p>
+    </section>
+
+    <section id="liability">
+      <h2>9. Limitation of liability</h2>
+      <p>To the fullest extent allowed by law, we are not liable for any indirect, incidental, special, or consequential damages, or for any loss of data, profit, or business, arising from your use of or inability to use Calcora. This includes any damage caused by relying on a calculation result.</p>
+      <p>Nothing in these Terms limits any rights you have under consumer protection laws that cannot be waived.</p>
+    </section>
+
+    <section id="termination">
+      <h2>10. Ending your use</h2>
+      <p>You can stop using Calcora at any time by uninstalling it. We may suspend or end your access to the app if you break these Terms. Sections that by their nature should continue after that, such as intellectual property, no warranties, and limitation of liability, will stay in effect.</p>
+    </section>
+
+    <section id="changes">
+      <h2>11. Changes to these terms</h2>
+      <p>We may update these Terms from time to time. We will change the "Last updated" date at the top of this page and, for significant changes, show a notice in the app. If you keep using Calcora after the changes take effect, you accept the updated Terms.</p>
+    </section>
+
+    <section id="law">
+      <h2>12. Governing law</h2>
+      <p>These Terms are governed by the laws of the jurisdiction where Calcora's developer is based, without regard to conflict of law rules. This does not take away any mandatory consumer protection rights you have in the country where you live.</p>
+    </section>
+
+    <section id="contact">
+      <h2>13. Contact us</h2>
+      <p>If you have questions about these Terms, please contact us:</p>
+      <p class="contact"><strong>Email:</strong> <a href="mailto:support.calcora@gmail.com">support.calcora@gmail.com</a></p>
+      <p>We will respond to your inquiry within 48 hours.</p>
+    </section>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Calcora</strong> – Beautiful Calculator for Everyone</p>
+    <p>© 2026 Calcora. All rights reserved. · <a href="privacy-policy.html">Privacy Policy</a> · <a href="#top">Back to top</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toc = document.getElementById('toc');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var desktop = window.matchMedia('(min-width: 861px)');
+
+  // Contents: always open on desktop, collapsed by default on phones
+  function syncToc() { toc.open = desktop.matches; }
+  syncToc();
+  if (desktop.addEventListener) desktop.addEventListener('change', syncToc);
+  else if (desktop.addListener) desktop.addListener(syncToc);
+
+  // On phones, close the menu after tapping a link
+  links.forEach(function (a) {
+    a.addEventListener('click', function () { if (!desktop.matches) toc.open = false; });
+  });
+
+  // Highlight the section currently being read
+  var sections = Array.prototype.slice.call(document.querySelectorAll('article section'));
+  function setActive(id) {
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

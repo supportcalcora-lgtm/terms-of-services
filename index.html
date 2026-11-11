@@ -6,7 +6,7 @@
 <title>Terms of Service – Calcora</title>
 <meta name="description" content="Terms of Service for the Calcora calculator app.">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png">
+<link rel="icon" href="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png">
 <style>
   :root {
@@ -32,6 +32,8 @@
       --line: #2a313a;
       --link: #ff9a4d;
       --lcd: #07090b;
+      --lcd-ink: #f3f5f7;
+      --lcd-muted: #8b96a3;
     }
   }
 
@@ -52,13 +54,8 @@
 
   /* ---------- Header + calculator-display hero ---------- */
   .site-head { padding: 20px 0 0; }
-  .head-row { display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.125rem; text-decoration: none; color: var(--ink); }
-  .brand img { width: 34px; height: 34px; border-radius: 9px; display: block; }
-  .head-nav a { margin-left: 18px; color: var(--muted); text-decoration: none; font-size: .9375rem; }
-  .head-nav a:first-child { margin-left: 0; }
-  .head-nav a:hover { color: var(--ink); }
-  .head-nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+  .brand { font-weight: 700; font-size: 1.125rem; letter-spacing: .01em; text-decoration: none; color: var(--ink); }
+  .brand span { color: var(--accent); }
 
   .display {
     margin: 20px 0 0;
@@ -87,7 +84,12 @@
     animation: blink 1.06s steps(1) infinite;
   }
   @keyframes blink { 50% { opacity: 0; } }
-  .display .ans { margin-top: 14px; font-size: clamp(1rem, 2.6vw, 1.375rem); color: var(--lcd-muted); line-height: 1.4; }
+  .display .ans {
+    margin-top: 14px;
+    font-size: clamp(1rem, 2.6vw, 1.375rem);
+    color: var(--lcd-muted);
+    line-height: 1.4;
+  }
   .updated { margin: 14px 4px 0; color: var(--muted); font-size: .9375rem; }
 
   /* ---------- Layout ---------- */
@@ -98,8 +100,14 @@
     margin: 32px auto 64px;
     align-items: start;
   }
+
   .toc { position: sticky; top: 24px; font-size: .9375rem; }
-  .toc summary { list-style: none; cursor: pointer; font-weight: 600; padding: 6px 0 10px; }
+  .toc summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 6px 0 10px;
+  }
   .toc summary::-webkit-details-marker { display: none; }
   .toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
   .toc li a {
@@ -114,8 +122,13 @@
   .toc li a:hover { color: var(--ink); }
   .toc li a.active { color: var(--ink); border-left-color: var(--accent); font-weight: 600; }
 
-  /* ---------- Terms text ---------- */
-  article { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(22px, 5vw, 52px); }
+  /* ---------- Policy text ---------- */
+  article {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: clamp(22px, 5vw, 52px);
+  }
   .lead { font-size: 1.1875rem; margin-top: 0; }
   section { max-width: 68ch; }
   section + section { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
@@ -139,7 +152,13 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 860px) {
     .layout { grid-template-columns: minmax(0, 1fr); margin-top: 24px; }
-    .toc { position: static; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px; }
+    .toc {
+      position: static;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 4px 16px;
+    }
     .toc summary { padding: 12px 0; }
     .toc summary::after { content: "+"; float: right; font-weight: 400; font-size: 1.25rem; line-height: 1; }
     .toc[open] summary::after { content: "–"; }
@@ -157,7 +176,7 @@
   }
   @media print {
     body { background: #fff; color: #000; }
-    .toc, .display .cursor, .head-nav { display: none; }
+    .toc, .display .cursor { display: none; }
     .layout { display: block; }
     article { border: 0; padding: 0; }
   }
@@ -166,15 +185,13 @@
 <body>
 
 <header class="site-head wrap">
-  <div class="head-row" id="top">
-    <a class="brand" href="#top">
-      <img src="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png" alt="" width="34" height="34" onerror="this.style.display='none'">
-      Calcora
-    </a>
-    <nav class="head-nav" aria-label="Legal pages"> 
-      <a href="https://supportcalcora-lgtm.github.io/privacy-policy/">Privacy Policy</a>
-      <a href="https://supportcalcora-lgtm.github.io/terms-of-services/" aria-current="page">Terms of Service</a>
-    </nav>
+  <div style="text-align: center; margin-bottom: 16px;">
+    <img 
+      src="https://raw.githubusercontent.com/avernexstudio-apps/logos/main/Calcora.png" 
+      alt="Calcora Logo" 
+      style="width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); display: inline-block; vertical-align: middle; margin-right: 12px;"
+    />
+    <a class="brand" href="#top" id="top" style="display: inline-block; vertical-align: middle;">Calcora<span>.</span></a>
   </div>
   <div class="display" role="img" aria-label="Terms of Service. Plain rules for using Calcora.">
     <div class="expr" aria-hidden="true">Terms of Service<span class="cursor"></span></div>
@@ -187,18 +204,18 @@
 
   <details class="toc" id="toc" open>
     <summary>Contents</summary>
-    <nav aria-label="Terms of service sections">
+    <nav aria-label="Terms of Service sections">
       <ol>
-        <li><a href="#acceptance">1. Accepting these terms</a></li>
+        <li><a href="#accept">1. Accepting these terms</a></li>
         <li><a href="#use">2. Using Calcora</a></li>
-        <li><a href="#themes">3. Premium themes and ads</a></li>
-        <li><a href="#accuracy">4. Calculation accuracy</a></li>
+        <li><a href="#free">3. Free features, premium themes and ads</a></li>
+        <li><a href="#accuracy">4. Calculation accuracy and estimates</a></li>
         <li><a href="#ip">5. Intellectual property</a></li>
         <li><a href="#third-party">6. Third-party services</a></li>
         <li><a href="#privacy">7. Your privacy</a></li>
         <li><a href="#warranty">8. No warranties</a></li>
         <li><a href="#liability">9. Limitation of liability</a></li>
-        <li><a href="#termination">10. Ending your use</a></li>
+        <li><a href="#ending">10. Ending your use</a></li>
         <li><a href="#changes">11. Changes to these terms</a></li>
         <li><a href="#law">12. Governing law</a></li>
         <li><a href="#contact">13. Contact us</a></li>
@@ -209,7 +226,7 @@
   <article>
     <p class="lead">These Terms of Service ("Terms") are the rules for using Calcora ("we," "our," or "the app"), our calculator application. Please read them before you use the app.</p>
 
-    <section id="acceptance">
+    <section id="accept">
       <h2>1. Accepting these terms</h2>
       <p>By downloading, installing, or using Calcora, you agree to these Terms. If you do not agree, please do not use the app.</p>
     </section>
@@ -227,21 +244,28 @@
       </ul>
     </section>
 
-    <section id="themes">
-      <h2>3. Premium themes and ads</h2>
-      <p>Calcora is free to use. Some premium themes can be unlocked by watching a rewarded video ad. By choosing to watch an ad, you agree to the ad being shown to you.</p>
+    <section id="free">
+      <h2>3. Free features, premium themes and ads</h2>
+      <p>Calcora is free to use. The calculator and all of its tools are free and do not require watching ads.</p>
+      <p>Some premium themes can be unlocked by watching an optional rewarded video ad. A theme unlocks only if you watch the ad until the reward is earned; closing it early does not unlock the theme.</p>
       <ul>
         <li>Unlocked themes are stored on your device. Uninstalling the app or clearing its data may remove them, and you may need to unlock them again.</li>
         <li>Themes have no cash value and cannot be sold, transferred, or exchanged.</li>
         <li>If an ad cannot be loaded or shown, for example because you are offline, the theme will not be unlocked.</li>
-        <li>We may change, add, or remove themes and the way they are unlocked at any time.</li>
+        <li>We may change, add, or remove themes, tools, and the way themes are unlocked at any time.</li>
       </ul>
     </section>
 
     <section id="accuracy">
-      <h2>4. Calculation accuracy</h2>
-      <p class="callout">Always double-check results that matter.</p>
-      <p>We work to make Calcora accurate, but all calculators have limits, including rounding and very large or very small numbers. Calcora should not be your only source for financial, medical, engineering, legal, or safety-critical decisions. You are responsible for checking any result before you rely on it.</p>
+      <h2>4. Calculation accuracy and estimates</h2>
+      <p class="callout">Results are estimates. Always double-check results that matter.</p>
+      <p>We work to make Calcora accurate, but every calculator has limits, including rounding and very large or very small numbers.</p>
+      <ul>
+        <li><strong>Money tools</strong> (loan, mortgage, investment, retirement, tax) use simplified models and the values you enter. Real lenders, banks, and tax authorities may use different rules, fees, and dates. They are not financial or tax advice.</li>
+        <li><strong>Health tools</strong> (BMI, calorie) give general estimates for healthy adults. They are not medical advice and are not a substitute for a doctor or dietitian.</li>
+        <li><strong>Currency rates</strong> come from a third-party service, update about once a day, and may be out of date. Do not rely on them for trading or payments.</li>
+      </ul>
+      <p>Calcora should not be your only source for financial, medical, engineering, legal, or safety-critical decisions. You are responsible for checking any result before you rely on it.</p>
     </section>
 
     <section id="ip">
@@ -251,12 +275,12 @@
 
     <section id="third-party">
       <h2>6. Third-party services</h2>
-      <p>Calcora uses Google AdMob to show ads. Your use of those ads is also subject to Google's own terms and policies, and we are not responsible for third-party services or the content of the ads they show. Links in the app or on these pages may lead to websites we do not control.</p>
+      <p>Calcora uses Google AdMob to show ads and ExchangeRate-API to provide currency rates. Your use of these services is also subject to their own terms and policies, and we are not responsible for third-party services or for the content of the ads they show.</p>
     </section>
 
     <section id="privacy">
       <h2>7. Your privacy</h2>
-      <p>How your data is handled is explained in our <a href="privacy-policy.html">Privacy Policy</a>, which is part of these Terms.</p>
+      <p>How your data is handled is explained in our Privacy Policy, which you can open in the app from <em>Settings &gt; Privacy Policy</em>. The Privacy Policy is part of these Terms.</p>
     </section>
 
     <section id="warranty">
@@ -266,11 +290,11 @@
 
     <section id="liability">
       <h2>9. Limitation of liability</h2>
-      <p>To the fullest extent allowed by law, we are not liable for any indirect, incidental, special, or consequential damages, or for any loss of data, profit, or business, arising from your use of or inability to use Calcora. This includes any damage caused by relying on a calculation result.</p>
+      <p>To the fullest extent allowed by law, we are not liable for any indirect, incidental, special, or consequential damages, or for any loss of data, money, profit, or business, arising from your use of or inability to use Calcora. This includes any loss caused by relying on a calculation result or estimate.</p>
       <p>Nothing in these Terms limits any rights you have under consumer protection laws that cannot be waived.</p>
     </section>
 
-    <section id="termination">
+    <section id="ending">
       <h2>10. Ending your use</h2>
       <p>You can stop using Calcora at any time by uninstalling it. We may suspend or end your access to the app if you break these Terms. Sections that by their nature should continue after that, such as intellectual property, no warranties, and limitation of liability, will stay in effect.</p>
     </section>
@@ -282,7 +306,7 @@
 
     <section id="law">
       <h2>12. Governing law</h2>
-      <p>These Terms are governed by the laws of the jurisdiction where Calcora's developer is based, without regard to conflict of law rules. This does not take away any mandatory consumer protection rights you have in the country where you live.</p>
+      <p>These Terms are governed by the laws of the country where Calcora's developer is based, without regard to conflict of law rules. This does not take away any mandatory consumer protection rights you have in the country where you live.</p>
     </section>
 
     <section id="contact">
@@ -298,7 +322,7 @@
 <footer>
   <div class="wrap">
     <p><strong>Calcora</strong> – Beautiful Calculator for Everyone</p>
-    <p>© 2026 Calcora. All rights reserved. · <a href="https://supportcalcora-lgtm.github.io/privacy-policy/">Privacy Policy</a> · <a href="#top">Back to top</a></p>
+    <p>© <span id="year">2026</span> Calcora. All rights reserved. · <a href="#top">Back to top</a></p>
   </div>
 </footer>
 
